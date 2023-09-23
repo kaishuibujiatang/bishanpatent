@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cf.bishanpatent.dao.CompanyMapper">
+
+    <resultMap id="HighValueCompany" type="Company">
+        <result property="name" column="first_applicant"/>
+        <result property="first_claim" column="first_claim"/>
+    </resultMap>
+    <select id="getHighValueCompany" resultMap="HighValueCompany">
+        select first_applicant, count(first_applicant) as first_claim
+        from bishanpatent.bishanpatent
+        where bishanpatent.bishanpatent.value_score > 12
+        group by first_applicant
+        order by count(first_applicant) desc
+        limit 0, 10;
+    </select>
+
+</mapper>

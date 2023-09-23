@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>专利大数据可视化</title>
+
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="fonts/icomoon.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+
+<body>
+<header>
+    <h1>璧山区高价值专利分析</h1>
+    <div class="showTime">当前时间：2021年11月15-0时54分14秒</div>
+    <script>
+        var t = null;
+        t = setTimeout(time, 1000); //開始运行
+        function time() {
+            clearTimeout(t); //清除定时器
+            dt = new Date();
+            var y = dt.getFullYear();
+            var mt = dt.getMonth() + 1;
+            var day = dt.getDate();
+            var h = dt.getHours(); //获取时
+            var m = dt.getMinutes(); //获取分
+            var s = dt.getSeconds(); //获取秒
+            document.querySelector(".showTime").innerHTML =
+                "当前时间：" +
+                y +
+                "年" +
+                mt +
+                "月" +
+                day +
+                "-" +
+                h +
+                "时" +
+                m +
+                "分" +
+                s +
+                "秒";
+            t = setTimeout(time, 1000); //设定定时器，循环运行
+        }
+    </script>
+    <div class="header-button">
+        <input id="Button1" type="button" value="全屏显示" onclick="kaishi()" class="button1"/>
+        <input id="Button2" type="button" value="退出全屏" onclick="guanbi()" class="button1"/>
+        <a  href = "http://localhost:8112/" ><button class="button1">璧山区</button></a>
+        <a  href = "http://localhost:8113/" ><button class="button1">北碚区</button></a>
+        <a  href = "http://localhost:8114/" ><button class="button1">人工智能</button></a>
+
+        <script>
+            function kaishi() {
+                var docElm = document.documentElement;
+                //W3C
+                if (docElm.requestFullscreen) {
+                    docElm.requestFullscreen();
+                }
+                //FireFox
+                else if (docElm.mozRequestFullScreen) {
+                    docElm.mozRequestFullScreen();
+                }
+                //Chrome等
+                else if (docElm.webkitRequestFullScreen) {
+                    docElm.webkitRequestFullScreen();
+                }
+                //IE11
+                else if (elem.msRequestFullscreen) {
+                    elem.msRequestFullscreen();
+                }
+            }
+
+            function guanbi() {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) {
+                    document.mozCancelFullScreen();
+                } else if (document.webkitCancelFullScreen) {
+                    document.webkitCancelFullScreen();
+                } else if (document.msExitFullscreen) {
+                    document.msExitFullscreen();
+                }
+            }
+
+            document.addEventListener("fullscreenchange", function () {
+                fullscreenState.innerHTML = (document.fullscreen) ? "" : "not ";
+            }, false);
+
+            document.addEventListener("mozfullscreenchange", function () {
+                fullscreenState.innerHTML = (document.mozFullScreen) ? "" : "not ";
+            }, false);
+
+            document.addEventListener("webkitfullscreenchange", function () {
+                fullscreenState.innerHTML = (document.webkitIsFullScreen) ? "" : "not ";
+            }, false);
+
+            document.addEventListener("msfullscreenchange", function () {
+                fullscreenState.innerHTML = (document.msFullscreenElement) ? "" : "not ";
+            }, false);
+        </script>
+    </div>
+
+</header>
+
+<div class="viewport">
+
+    <div class="column">
+        <!--版权所有   无领导小组 -->
+        <!--监控-->
+        <div class="monitor panel">
+            <div class="inner">
+                <div class="tabs">
+                    <a href="javascript:;" data-index="0" class="active">璧山区高价值专利滚动区域</a>
+                </div>
+                <div class="content" style="display: block;">
+                    <div class="head">
+                        <span class="col">申请地区</span>
+                        <span class="col">专利名称</span>
+                        <span class="col">专利评分</span>
+                    </div>
+                    <div id="app">
+                        <div class="marquee-view">
+                            <div class="marquee">
+                                <div class="row" data-template='<div class="popover popover-panel" role="tooltip">
+                                        <div class="arrow"></div>
+                                        <h3 class="popover-header popover-panel-header"></h3>
+                                        <div class="popover-body popover-panel-body"></div>
+                                    </div>' data-toggle="popover" :data-original-title="n.title" :data-content="n.digest" v-for="n in list">
+                                    <span class="col">{{n.applicant_county}}</span>
+                                    <span class="col">{{n.title}}</span>
+                                    <span class="col">{{n.value_score}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--点位-->
+        <div class="point panel">
+            <div class="inner">
+                <h3>发明人类型统计</h3>
+                <div class="chart">
+                    <div class="pie"></div>
+                    <div class="data">
+                        <div class="item">
+                            <h4>3211</h4>
+                            <span>
+                                    <i class="icon-dot" style="color: #ed3f35"></i>
+                                    发明人总数
+                                </span>
+                        </div>
+                        <div class="item">
+                            <h4>53</h4>
+                            <span>
+                                    <i class="icon-dot" style="color: #eacf19"></i>
+                                    本月新增
+                                </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="column">
+        <div class="overview panel">
+            <div class="inner">
+                <div class="item">
+                    <h4>30245</h4>
+                    <span>
+                            <i class="icon-dot" style="color: #006cff"></i>
+                            专利总数
+                        </span>
+                </div>
+                <div class="item">
+                    <h4>16825</h4>
+                    <span>
+                            <i class="icon-dot" style="color: #6acca3"></i>
+                            公司总数
+                        </span>
+                </div>
+                <div class="item">
+                    <h4>1641</h4>
+                    <span>
+                            <i class="icon-dot" style="color: #6acca3"></i>
+                            高价值专利
+                        </span>
+                </div>
+                <div class="item">
+                    <h4>11</h4>
+                    <span>
+                            <i class="icon-dot" style="color: #ed3f35"></i>
+                            今日新增
+                        </span>
+                </div>
+            </div>
+        </div>
+        <!-- 地图 -->
+        <div class="map">
+            <h3 style="color:#ffffff;font-size:0.833rem">璧山区高价值专利分布</h3>
+            <h4 style="color: #fffcb0;font-size: 0.733rem;"> ⭐⭐⭐⭐⭐</h4>
+            <h4 style="color: #fffcb0;font-size: 0.733rem"> ⭐⭐⭐⭐</h4>
+            <div class="chart"></div>
+            <div class="map1"></div>
+            <div class="map2"></div>
+            <div class="map3"></div>
+        </div>
+
+        <!-- 用户 -->
+
+    </div>
+    <div class="column">
+        <!-- 专利增长统计 -->
+        <div class="sales panel">
+            <div class="inner">
+                <div class="caption">
+                    <h3>专利增长统计</h3>
+                    <a href="javascript:;" class="active" data-type="year">年</a>
+                    <!--                        <a href="javascript:;" data-type="quarter">季</a>-->
+                    <!--                        <a href="javascript:;" data-type="month">本年</a>-->
+                    <!--                        <a href="javascript:;" data-type="week">周</a>-->
+                </div>
+                <div class="chart">
+                    <div class="label">单位:个</div>
+                    <div class="line"></div>
+                </div>
+            </div>
+        </div>
+        <!--        专利分类号的饼图-->
+        <div class="panel pie1">
+            <div class="inner">
+                <h3>专利分类号统计</h3>
+                <div class="chart"></div>
+                <div class="panel-footer" style="width: 426px;height: 228px"></div>
+            </div>
+        </div>
+        <!--产业概况-->
+        <div class="users panel">
+            <div class="inner">
+                <h3>产业概况</h3>
+                <div class="chart">
+                    <div class="bar" style="width: 426px;height: 228px"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+
+<script src="js/vue.min.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/echarts.min.js"></script>
+<script src="js/axios-0.18.0.js"></script>
+<script src="js/index.js"></script>
+
+<script src="js/china.js"></script>
+<script src="js/mymap.js"></script>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            data: 'hello',
+            list: []
+        },
+        created: function () {
+            let vue = this;
+
+            axios.get('HighPatent')
+                .then(response => {
+                        this.list = response.data;
+                        vue.$nextTick(function(){
+                            console.log($('[data-toggle="popover"]'));
+                            $('[data-toggle="popover"]').popover({
+                                trigger: 'hover'
+                            });
+                            vue.$forceUpdate();
+                        });
+                })
+                .catch(function (error) { //请求失败处理
+                    console.log(error);
+                })
+
+        }
+    })
+</script>
+</html>

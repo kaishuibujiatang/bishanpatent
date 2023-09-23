@@ -1,0 +1,539 @@
+body {
+    line-height: 1.15;
+    font-size: 0.5rem;
+    margin: 0;
+    padding: 0;
+    /*  背景图定位 / 背景图尺寸  cover 完全铺满容器  contain 完整显示在容器内 */
+    background: url(../images/bg.jpg) no-repeat #000;
+    background-size: cover;
+    /*background-repeat: no-repeat;*/
+    background-position: 0 0 / cover;
+    /*background-color: #101129;*/
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+header {
+    position: relative;
+    height: 4.5rem;
+    background: url(../images/head_bg.png) no-repeat top center;
+    background-size: 100% 100%;
+}
+
+header h1 {
+    padding-top: 20px;
+    font-size: 1.475rem;
+    color: #fff;
+    text-align: center;
+    /*line-height: 1rem;*/
+}
+
+header .showTime {
+    position: absolute;
+    top: 20px;
+    right: 0.375rem;
+    line-height: 0.9375rem;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.header-button {
+    position: absolute;
+    top: 10px;
+    left: 0.375rem;
+}
+
+.button1 {
+    font-size: 5px;
+    background-color: #14007a;
+    color: #ffffff;
+    border: 2px solid #000000;
+    padding: 8px 12px;
+    text-align: center;
+    text-decoration: none;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.button1:hover {
+    background-color: #000e57;
+    color: white;
+}
+
+.viewport {
+    /* 限定大小 */
+    min-width: 1024px;
+    max-width: 1920px;
+    min-height: 780px;
+
+    margin: 0 auto;
+    /*background: url(../images/logo2.png) no-repeat 0 0 / contain;*/
+    display: flex;
+    padding: 0rem 0.833rem 0;
+}
+
+.column {
+    flex: 3;
+    position: relative;
+}
+
+.column:nth-child(2) {
+    flex: 5;
+    margin: 1.333rem 0.833rem 0;
+}
+
+.panel {
+    /* 边框 */
+    box-sizing: border-box;
+    border: 2px solid red;
+    border-image: url(../images/border.png) 51 38 21 132;
+    border-width: 2.125rem 1.583rem 0.875rem 5.5rem;
+    position: relative;
+    margin-bottom: 0.833rem;
+}
+
+.panel .inner {
+    /* 装内容 */
+
+    position: absolute;
+    top: -2.125rem;
+    right: -1.583rem;
+    bottom: -0.875rem;
+    left: -5.5rem;
+    padding: 1rem 1.5rem;
+}
+
+.panel h3 {
+    font-size: 0.722rem;
+    color: #fff;
+}
+
+
+/* 滚动 */
+.monitor {
+    height: 22rem;
+}
+
+.monitor .inner {
+    padding: 1rem 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.monitor .tabs {
+    padding: 0 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.monitor .tabs a {
+    color: #1950c4;
+    font-size: 0.85rem;
+    padding: 0 1.125rem;
+}
+
+.monitor .tabs a:first-child {
+    /*border-right: 0.083rem solid #00f2f1;*/
+    padding-left: 0;
+}
+
+.monitor .tabs a.active {
+    color: #fff;
+}
+
+.monitor .content {
+    flex: 1;
+    display: none;
+    position: relative;
+}
+
+.monitor .head {
+    background: rgba(255, 255, 255, 0.1);
+    font-size: 0.583rem;
+    padding: 0.5rem 1.5rem;
+    color: #68d8fe;
+    display: flex;
+    justify-content: space-between;
+    line-height: 1.05;
+}
+
+.monitor .col:nth-child(1) {
+    width: 3.2rem;
+}
+
+.monitor .col:nth-child(2) {
+    width: 8.4rem;
+    /* 不换行  一行省略*/
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.monitor .col:nth-child(3) {
+    width: 3.2rem;
+}
+
+.monitor .marquee-view {
+    position: absolute;
+    top: 1.6rem;
+    bottom: 0;
+    width: 100%;
+    overflow: hidden;
+}
+
+.monitor .row {
+    line-height: 1.05;
+    padding: 0.5rem 1.5rem;
+    color: #61a8ff;
+    font-size: 0.65rem;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+
+.monitor .row:hover {
+    color: #68d8ff;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.monitor .row:hover .icon-dot {
+    opacity: 1;
+}
+
+.monitor .icon-dot {
+    position: absolute;
+    left: 0.64rem;
+    opacity: 0;
+}
+
+.monitor .marquee-view {
+    position: absolute;
+    top: 1.6rem;
+    bottom: 0;
+    width: 100%;
+    overflow: hidden;
+}
+
+.monitor .row {
+    line-height: 1.05;
+    padding: 0.5rem 1.5rem;
+    color: #61a8ff;
+    font-size: 0.65rem;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+
+.monitor .row:hover {
+    color: #68d8ff;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.monitor .row:hover .icon-dot {
+    opacity: 1;
+}
+
+.monitor .icon-dot {
+    position: absolute;
+    left: 0.64rem;
+    opacity: 0;
+}
+
+/* ------------------------------------------------------------动画 */
+@keyframes row {
+    0% {
+    }
+    100% {
+        transform: translateY(-50%);
+    }
+}
+
+/* 调用动画 */
+.monitor .marquee {
+    /* //infinite永久调用动画 */
+    animation: row 100s linear infinite;
+}
+
+/*鼠标划入 停止动画  */
+.monitor .marquee:hover {
+    animation-play-state: paused;
+}
+
+/* 点位 */
+.point {
+    height: 16rem;
+}
+
+.point .chart {
+    display: flex;
+    margin-top: 1rem;
+    justify-content: space-between;
+}
+
+.point .pie {
+    width: 13rem;
+    height: 10rem;
+    margin-left: -0.4rem;
+}
+
+.point .data {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 7rem;
+    padding: 1.5rem 1.25rem;
+    background-image: url(../images/rect.png);
+    background-size: cover;
+}
+
+.point h4 {
+    margin-bottom: 0.5rem;
+    font-size: 1.167rem;
+    color: #fff;
+}
+
+.point span {
+    display: block;
+    color: #4c9bfd;
+    font-size: 0.667rem;
+}
+
+/* 概览区域 */
+.overview {
+    height: 4.583rem;
+}
+
+.overview .inner {
+    display: flex;
+    justify-content: space-between;
+}
+
+.overview h4 {
+
+    font-size: 1.567rem;
+    padding-left: 0.2rem;
+    color: #fff;
+    margin-bottom: 0.3rem
+}
+
+.overview span {
+    font-size: 0.667rem;
+    color: #4c9bfd;
+}
+
+/* 地图  */
+.map {
+    height: 32rem;
+    margin-bottom: 0.833rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.map {
+    position: relative;
+    height: 32rem;
+}
+
+.map .chart {
+    position: absolute;
+    top: -1%;
+    left: 0%;
+    z-index: 5;
+    /*height: 42rem;*/
+    height: 32rem;
+    width: 100%;
+}
+
+.map .map1,
+.map .map2,
+.map .map3 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 19.425rem;
+    height: 19.425rem;
+    background: url(../images/map.png) no-repeat;
+    background-size: 100% 100%;
+    opacity: 0.3;
+}
+
+.map .map2 {
+    width: 24.1rem;
+    height: 24.1rem;
+    background-image: url(../images/lbx.png);
+    opacity: 0.6;
+    animation: rotate 15s linear infinite;
+    z-index: 2;
+}
+
+.map .map3 {
+    width: 21.2rem;
+    height: 21.2rem;
+    background-image: url(../images/jt.png);
+    animation: rotate1 10s linear infinite;
+}
+
+@keyframes rotate {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+@keyframes rotate1 {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    to {
+        transform: translate(-50%, -50%) rotate(-360deg);
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    html {
+        font-size: 42px !important;
+    }
+}
+
+@media screen and (min-width: 1920) {
+    html {
+        font-size: 80px !important;
+    }
+}
+
+/* 用户模块 */
+
+/* 订单 */
+
+/* 销售区域 */
+.sales {
+    /*height：19rem*/
+    height: 13rem;
+}
+
+.sales .caption {
+    display: flex;
+    line-height: 1;
+}
+
+.sales h3 {
+    height: 0.75rem;
+    padding-right: 0.75rem;
+    border-right: 0.083rem solid #00f2f1;
+}
+
+.sales a {
+    padding: 0.167rem;
+    font-size: 0.667rem;
+    margin: -0.125rem 0 0 0.875rem;
+    border-radius: 0.125rem;
+    color: #0bace6;
+}
+
+.sales a.active {
+    background-color: #4c9bfd;
+    color: #fff;
+}
+
+.sales .inner {
+    display: flex;
+    flex-direction: column;
+}
+
+.sales .chart {
+    flex: 1;
+    padding-top: 0.6rem;
+    position: relative;
+}
+
+.sales .label {
+    position: absolute;
+    left: 1.75rem;
+    top: 0.75rem;
+    color: #4996f5;
+    font-size: 0.583rem;
+}
+
+.sales .line {
+    width: 100%;
+    height: 100%;
+}
+
+
+/* 渠道区块 */
+/* 产业概况 */
+.users {
+    height: 13rem;
+    display: flex;
+}
+
+.users .chart {
+    display: flex;
+    margin-top: 1rem;
+}
+
+.users .bar {
+    width: 24.5rem;
+    height: 10rem;
+}
+
+.users .data {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 7rem;
+    padding: 1.5rem 1.25rem;
+    box-sizing: border-box;
+    background-image: url(../images/rect.png);
+    background-size: cover;
+}
+
+.users h4 {
+    margin-bottom: 0.5rem;
+    font-size: 1.167rem;
+    color: #fff;
+}
+
+.users span {
+    display: block;
+    color: #4c9bfd;
+    font-size: 0.667rem;
+}
+
+.pie1 {
+    height: 11rem;
+}
+
+/*popover*/
+.popover-panel {
+    background: rgba(0, 0, 0, 1) !important;
+}
+
+.popover-panel-header {
+    background-color: #6495ED !important;
+    color: #E6E6FA;
+    font-size: 18px !important;
+}
+
+.popover-panel-body {
+    background-image: url(../images/rect.png);
+    background-size: cover;
+    color: #E6E6FA !important;
+    font-size: 15px;
+}

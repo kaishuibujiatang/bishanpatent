@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cf.bishanpatent.dao.PatentMapper">
+
+    <select id="getPatentById" resultType="Patent">
+        select * from bishanpatent.bishanpatent where id=#{id}
+    </select>
+
+    <resultMap id="HighValuePatentMapping" type="Patent">
+        <id property="id" column="id"/>
+        <result property="applicant_country_code" column="applicant_country_code"/>
+        <result property="title" column="title"/>
+        <result property="applicant_county" column="applicant_county"/>
+        <result property="value_score" column="value_score"/>
+        <result property="digest" column="digest"/>
+    </resultMap>
+    <select id="queryHighValuePatent" resultMap="HighValuePatentMapping">
+        select `id`,`title`, `digest`,`applicant_country_code`, `applicant_county`,`value_score` from bishanpatent.bishanpatent
+        where value_score > 27;
+    </select>
+
+</mapper>
